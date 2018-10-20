@@ -13,3 +13,12 @@
 
 // Include common definitions from above.
 apply from: '../build.common.gradle'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation project(path: ':DogeCV')
+    implementation project(path: ':openCVLibrary3')
+}
