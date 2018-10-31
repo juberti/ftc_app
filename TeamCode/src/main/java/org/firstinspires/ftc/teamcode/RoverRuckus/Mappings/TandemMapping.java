@@ -18,18 +18,26 @@ public class TandemMapping extends SoloMapping {
 
     @Override
     public double turnSpeed() {
-        return removeLowVals(gamepad1.right_stick_x, 0.2);
+        if (Math.abs(gamepad1.right_stick_x) > 0.2) {
+            return removeLowVals(gamepad1.right_stick_x, 0.2);
+        } else { // Give GP2 a chance to turn
+            return removeLowVals(gamepad2.right_stick_x, 0.2);
+        }
     }
 
 
-    final static double MIN_ARM_MOVE_SPEED = 0.15;
     @Override
     public double armSpeed() {
-        return removeLowVals(gamepad2.left_trigger - gamepad2.right_trigger, 0.05) * 0.4;
+        double speed = removeLowVals(gamepad2.left_trigger - gamepad2.right_trigger, 0.05) * 0.4;
+        if (speed < 0) {
+            // If we're moving backwards
+            spinDir = 0;
+        }
+        return speed;
     }
 
     public double getExtendSpeed() {
-        return -clamp(gamepad2.left_stick_y + gamepad2.right_stick_y);
+        return -clamp(gamepad2.left_stick_y);
     }
 
     @Override
