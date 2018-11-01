@@ -28,12 +28,7 @@ public class TandemMapping extends SoloMapping {
 
     @Override
     public double armSpeed() {
-        double speed = removeLowVals(gamepad2.left_trigger - gamepad2.right_trigger, 0.05) * 0.4;
-        if (speed < 0) {
-            // If we're moving backwards
-            spinDir = 0;
-        }
-        return speed;
+        return removeLowVals(gamepad2.left_trigger - gamepad2.right_trigger, 0.05) * 0.4;
     }
 
     public double getExtendSpeed() {
