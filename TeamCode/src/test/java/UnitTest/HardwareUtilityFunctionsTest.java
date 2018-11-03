@@ -1,3 +1,4 @@
+
 package UnitTest;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
@@ -131,5 +132,10 @@ public class HardwareUtilityFunctionsTest {
             assertEquals(DIAGONAL2_EXPECTED[i], powers[1], DELTA);
             assertEquals(DIAGONAL2_EXPECTED[i], powers[2], DELTA);
         }
+    }
+
+    @Test
+    public void hardwareUtilities_DoNothing() {
+        assertEquals(0, 0);
     }
 }

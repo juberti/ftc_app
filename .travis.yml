@@ -1,0 +1,21 @@
+sudo: required	
+language: android	
+android:	
+  components:	
+    - build-tools-27.0.3	
+    - android-19	
+    - android-23	
+before_install:	
+  - sudo chmod +x gradlew	
+  - echo yes | sdkmanager "platforms;android-27"
+  - echo yes | sdkmanager "platforms;android-14"
+  
+notifications:	
+  email:	
+    recipients:	
+      - guberti@eastsideprep.org	
+    on_success: never	
+    on_failure: always
+    
+script:
+  - ./gradlew test
